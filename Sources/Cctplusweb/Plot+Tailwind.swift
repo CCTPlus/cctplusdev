@@ -25,7 +25,6 @@ public extension Node where Context == HTML.DocumentContext {
     ///   resulting HTML page. Default: `feed.rss`.
     /// - parameter rssFeedTitle: An optional title for the page's RSS feed.
     static func scriptHead<T: Website>(
-        scriptURLS: [String],
         for location: Location,
         on site: T,
         titleSeparator: String = " | ",
@@ -46,6 +45,8 @@ public extension Node where Context == HTML.DocumentContext {
         if description.isEmpty {
             description = site.description
         }
+        
+        let scriptURLS = ["https://cdn.tailwindcss.com", "https://kit.fontawesome.com/6be091a552.js"]
 
         return .head(
             .encoding(.utf8),
