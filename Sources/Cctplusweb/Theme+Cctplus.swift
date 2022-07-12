@@ -127,7 +127,7 @@ private struct SiteFooter: Component {
             Div {
                 Span {
                     Span("CCT+ ")
-                    Span("© \(Date().formatted(.dateTime.year()))")
+                    Span("© 2022")
                         .class("text-sm")
                 }
                 Div {
