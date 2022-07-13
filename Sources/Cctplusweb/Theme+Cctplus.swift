@@ -97,10 +97,10 @@ private struct SiteHeader<Site: Website>: Component {
     var selectedSelectionID: Site.SectionID?
     
     // Social media links
-    let socialMedia = [[FontAwesomeIcons.instagramSquare, "https://instagram.com/mwilson_codes"],
-                       [FontAwesomeIcons.twitterSquare, "https://twitter.com/maeganwilson_"],
-                       [FontAwesomeIcons.youtubeSquare, "https://youtube.com/c/mwilson_codes"],
-                       [FontAwesomeIcons.githubSquare, "https://github.com/CCTPlus"],
+    let socialMedia = [[FontAwesomeIcons.instagram, "https://instagram.com/mwilson_codes"],
+                       [FontAwesomeIcons.twitter, "https://twitter.com/maeganwilson_"],
+                       [FontAwesomeIcons.youtube, "https://youtube.com/c/mwilson_codes"],
+                       [FontAwesomeIcons.github, "https://github.com/CCTPlus"],
                        [FontAwesomeIcons.twitch, "https://twitch.tv/mwilson_codes"]]
     
     var body: Component {
@@ -130,6 +130,7 @@ private struct SiteHeader<Site: Website>: Component {
         List(socialMedia) { social in
             return Link(url: social[1] as! URLRepresentable) {
                 Node.i(.class((social[0] as! FontAwesomeIcons).icon))
+                    .class("text-xl")
             }
         }.class("flex flex-row gap-4")
     }
