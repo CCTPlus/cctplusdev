@@ -70,3 +70,11 @@ public extension Node where Context == HTML.DocumentContext {
         )
     }
 }
+
+extension Component {
+    func classes(_ classNames: [String]) -> Component {
+        attribute(named: "class",
+                  value: classNames.joined(separator: " "),
+                  replaceExisting: false)
+    }
+}

@@ -22,25 +22,26 @@ private struct CCTPlusHTMLFactory<Site: Website>: HTMLFactory {
              .scriptHead(
                 for: index, on: context.site),
              .body{
-                 Div {
+                 Wrapper {
                      SiteHeader(context: context, selectedSelectionID: nil)
                      Div {
                          Div {
                              H1(index.title)
-                                 .class("text-6xl")
+                                 .class(Tailwind.text(size: .xl6))
                              Paragraph("Swift development, articles, and news by Maegan.")
-                                 .class("text-xl")
-                         }.class("flex flex-wrap flex-row items-end")
+                                 .class(Tailwind.text(size: .xl))
+                         }.classes([Tailwind.flexBox(props: [.flex, .wrap, .row]),
+                                    Tailwind.alignItemsEnd])
                          Div {
                              Paragraph("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.")
-                                 .class("py-2")
+                                 .class(Tailwind.padding(axis: .vertical, amount: .two))
                              Paragraph("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.")
-                                 .class("py-2")
+                                 .class(Tailwind.padding(axis: .vertical, amount: .two))
                          }
-                     }.class("col-span-3")
-                 }.class("grid grid-cols-4")
+                     }.class(Tailwind.columnSpan(columns: 3))
+                 }
              },
-             .class("bg-gray-100 p-2")
+             .class("\(Tailwind.bg(.gray, shade: 100)) \(Tailwind.padding(axis: .all, amount: .two))")
         )
     }
     
@@ -52,10 +53,12 @@ private struct CCTPlusHTMLFactory<Site: Website>: HTMLFactory {
                      SiteHeader(context: context, selectedSelectionID: section.id)
                      Div {
                          H1(section.title)
-                             .class("text-6xl")
-                     }
+                             .class(Tailwind.text(size: .xl6))
+                     }.class(Tailwind.columnSpan(columns: 3))
                  }
-             })
+             },
+             .class("\(Tailwind.bg(.gray, shade: 100)) \(Tailwind.padding(axis: .all, amount: .two))")
+        )
     }
     
     func makeItemHTML(for item: Item<Site>, context: PublishingContext<Site>) throws -> HTML {
@@ -63,6 +66,7 @@ private struct CCTPlusHTMLFactory<Site: Website>: HTMLFactory {
              .head(for: item, on: context.site),
              .body {
                  H1(item.title)
+                     .class(Tailwind.text(size: .xl6))
              })
     }
     
@@ -71,6 +75,7 @@ private struct CCTPlusHTMLFactory<Site: Website>: HTMLFactory {
              .head(for: page, on: context.site),
              .body {
                  H1(page.title)
+                     .class(Tailwind.text(size: .xl6))
              })
     }
     
@@ -79,6 +84,7 @@ private struct CCTPlusHTMLFactory<Site: Website>: HTMLFactory {
              .head(for: page, on: context.site),
              .body {
                  H1(page.title)
+                     .class(Tailwind.text(size: .xl6))
              })
     }
     
@@ -87,6 +93,7 @@ private struct CCTPlusHTMLFactory<Site: Website>: HTMLFactory {
              .head(for: page, on: context.site),
              .body {
                  H1(page.title)
+                     .class(Tailwind.text(size: .xl6))
              })
     }
     
@@ -103,14 +110,24 @@ private struct SiteHeader<Site: Website>: Component {
                        [FontAwesomeIcons.github, "https://github.com/CCTPlus"],
                        [FontAwesomeIcons.twitch, "https://twitch.tv/mwilson_codes"]]
     
+    let active = [Tailwind.bg(.sky, shade: 500),
+                  Tailwind.padding(axis: .horizontal, amount: .four),
+                  Tailwind.margin(axis: .vertical, amount: .two)]
+    let normal = [Tailwind.bg(.emerald, shade: 500),
+                  Tailwind.bg(.emerald, shade: 500, opactity: 50, isHoverState: true),
+                  Tailwind.padding(axis: .horizontal, amount: .four),
+                  Tailwind.transitionAll,
+                  Tailwind.margin(axis: .vertical, amount: .two)]
+    
     var body: Component {
             Div {
                 Link(context.site.name, url: "/")
-                    .class("w-1/4 text-lg")
+                    .classes([Tailwind.text(size: .lg),
+                             Tailwind.width(size: .quarter)])
                 socials
                 navigation
                 SiteFooter()
-            }.class("col-span-1")
+            }.class(Tailwind.columnSpan(columns: 1))
     }
     
     private var navigation: Component {
@@ -120,8 +137,7 @@ private struct SiteHeader<Site: Website>: Component {
                 
                 return Button {
                     Link(section.title, url: section.path.absoluteString)
-                }.class(sectionID == selectedSelectionID ? "bg-sky-500 hover:bg-sky-500/50 px-4 transition-all" : "bg-emerald-500 hover:bg-emerald-500/50 px-4 transition-all")
-                    .class("my-2")
+                }.classes(sectionID == selectedSelectionID ? active : normal)
             }
         }
     }
@@ -132,32 +148,43 @@ private struct SiteHeader<Site: Website>: Component {
                 Node.i(.class((social[0] as! FontAwesomeIcons).icon))
                     .class("text-xl")
             }
-        }.class("flex flex-row gap-4")
+        }.classes([Tailwind.flexBox(props: [.flex, .row]),
+                   Tailwind.gap(size: .four)])
     }
 }
 
 private struct SiteFooter: Component {
+    let footerLinkClasses = [Tailwind.bg(.sky, shade: 500),
+                      Tailwind.bg(.sky, shade: 500, opactity: 50, isHoverState: true),
+                      Tailwind.transitionAll,
+                      Tailwind.padding(axis: .horizontal, amount: .four),
+                      Tailwind.transitionAll]
+    
     var body: Component {
         Footer {
             Div {
                 Link("Contact", url: "/contact")
-                    .class("bg-sky-500 hover:bg-sky-500/50 px-4 transition-all")
+                    .classes(footerLinkClasses)
             }
             Div{
                 Link("Media Kit", url: "/logos")
-                    .class("bg-sky-500 hover:bg-sky-500/50 px-4 transition-all")
+                    .classes(footerLinkClasses)
             }
             Div {
                 Span("Generated using ")
                 Link("Publish", url: "https://github.com/johnsundell/publish")
                     .linkTarget(.blank)
-                    .class("bg-orange-500 hover:bg-orange-500/50 px-4 transition-all")
+                    .classes([Tailwind.bg(.orange, shade: 500),
+                              Tailwind.bg(.orange, shade: 500, opactity: 50, isHoverState: true),
+                              Tailwind.transitionAll,
+                              Tailwind.padding(axis: .horizontal, amount: .four),
+                              Tailwind.transitionAll])
             }
             
             Div {
                 Span("CCT+ ")
                 Span("© 2022")
-                    .class("text-sm")
+                    .class(Tailwind.text(size: .sm))
             }
         }
     }
@@ -168,7 +195,7 @@ private struct Wrapper: ComponentContainer {
     
     var body: Component {
         Div(content: content)
-            .class("m-auto container")
+            .classes([Tailwind.grid(with: 4)])
     }
     
 }
