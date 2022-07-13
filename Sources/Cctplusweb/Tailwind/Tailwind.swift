@@ -9,6 +9,15 @@ import Foundation
 
 struct Tailwind {
     static var container = "container"
+    
+    static func position(_ position: Position) -> String {
+        return position.rawValue
+    }
+    
+    static func overflow(_ overflow: Overflow) -> String {
+        return "overflow-\(overflow.rawValue)"
+    }
+    
     // Flexbox
     static func flexBox(props: [FlexBox]) -> String {
         return "\(props.map({$0.rawValue}).joined(separator: " "))"

@@ -25,5 +25,7 @@ enum TShirtSizes: String {
 
 enum Fractions: String {
     case quarter = "1/4"
+    case oneFifth = "1/5"
+    case fourFifth = "4/5"
     case screen = "screen"
 }
