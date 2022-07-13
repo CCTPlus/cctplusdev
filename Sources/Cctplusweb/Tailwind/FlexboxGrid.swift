@@ -11,4 +11,9 @@ enum FlexBox: String {
     case flex = "flex"
     case wrap = "flex-wrap"
     case row = "flex-row"
+    case column = "flex-col"
+}
+
+enum Justify: String {
+    case between = "between"
 }

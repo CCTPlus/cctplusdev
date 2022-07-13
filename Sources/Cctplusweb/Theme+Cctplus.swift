@@ -41,7 +41,7 @@ private struct CCTPlusHTMLFactory<Site: Website>: HTMLFactory {
                      }.class(Tailwind.columnSpan(columns: 3))
                  }
              },
-             .class("\(Tailwind.bg(.gray, shade: 100)) \(Tailwind.padding(axis: .all, amount: .two))")
+             .class("\(Tailwind.bg(.gray, shade: 100))")
         )
     }
     
@@ -121,13 +121,18 @@ private struct SiteHeader<Site: Website>: Component {
     
     var body: Component {
             Div {
-                Link(context.site.name, url: "/")
-                    .classes([Tailwind.text(size: .lg),
-                             Tailwind.width(size: .quarter)])
-                socials
+                Div {
+                    Link(context.site.name, url: "/")
+                        .classes([Tailwind.text(size: .lg),
+                                 Tailwind.width(size: .quarter)])
+                    socials
+                }.classes([Tailwind.padding(axis: .left, amount: .four)])
                 navigation
                 SiteFooter()
-            }.class(Tailwind.columnSpan(columns: 1))
+            }.classes([Tailwind.columnSpan(columns: 1),
+                       Tailwind.flexBox(props: [.flex, .column]),
+                       Tailwind.justify(.between),
+                       Tailwind.height(size: .screen)])
     }
     
     private var navigation: Component {
@@ -174,7 +179,7 @@ private struct SiteFooter: Component {
                 Span("Generated using ")
                 Link("Publish", url: "https://github.com/johnsundell/publish")
                     .linkTarget(.blank)
-                    .classes([Tailwind.bg(.orange, shade: 500),
+                    .classes([Tailwind.bg(.orange, shade: 500, opactity: 30),
                               Tailwind.bg(.orange, shade: 500, opactity: 50, isHoverState: true),
                               Tailwind.transitionAll,
                               Tailwind.padding(axis: .horizontal, amount: .four),
@@ -185,7 +190,7 @@ private struct SiteFooter: Component {
                 Span("CCT+ ")
                 Span("© 2022")
                     .class(Tailwind.text(size: .sm))
-            }
+            }.classes([Tailwind.padding(axis: .bottom, amount: .two)])
         }
     }
 }

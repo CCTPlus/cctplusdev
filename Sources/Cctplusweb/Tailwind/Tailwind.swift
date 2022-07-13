@@ -14,6 +14,9 @@ struct Tailwind {
         return "\(props.map({$0.rawValue}).joined(separator: " "))"
     }
     static var alignItemsEnd = "items-end"
+    static func justify(_ justify: Justify) -> String {
+        return "justify-\(justify.rawValue)"
+    }
     
     // Grid
     static func grid(with columns: Int) -> String {
@@ -59,6 +62,11 @@ struct Tailwind {
     static func width(size: Fractions) -> String {
         "w-"+size.rawValue
     }
+    
+    static func height(size: Fractions) -> String {
+        "h-"+size.rawValue
+    }
+    
     static func text(size: TShirtSizes) -> String {
         "text-\(size.rawValue)"
     }
