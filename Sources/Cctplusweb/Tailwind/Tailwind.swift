@@ -97,4 +97,34 @@ struct Tailwind {
         }
         return isHoverState ? "hover:\(twClass)" : twClass
     }
+    
+    static func font(family: FontFamily) -> String {
+        "font-\(family.rawValue)"
+    }
+    
+    static func border(_ side: Sides, size: Sizes = .default) -> String{
+        var twClass = "border"
+        if side != .all {
+            twClass += "-\(side.rawValue)"
+        }
+        if size != .default {
+            twClass += "-\(size.rawValue)"
+        }
+        
+        return twClass
+    }
+    
+    static func border(_ color: Colors,
+                   shade: Int? = nil,
+                   opactity: Int? = nil,
+                   isHoverState: Bool = false) -> String {
+        var twClass = "border-\(color.rawValue)"
+        if let shade = shade {
+            twClass += "-\(shade)"
+        }
+        if let opactity = opactity {
+            twClass += "/\(opactity)"
+        }
+        return isHoverState ? "hover:\(twClass)" : twClass
+    }
 }

@@ -10,3 +10,7 @@ import Foundation
 enum TextAlign: String {
     case center = "center"
 }
+
+enum FontFamily: String {
+    case mono = "mono"
+}

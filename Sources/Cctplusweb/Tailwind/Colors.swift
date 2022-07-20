@@ -11,6 +11,7 @@ enum Colors: String {
     case white = "white"
     case black = "black"
     case gray = "gray"
+    case zinc = "zinc"
     case emerald = "emerald"
     case sky = "sky"
     case orange = "orange"

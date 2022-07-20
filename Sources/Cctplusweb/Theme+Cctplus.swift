@@ -122,7 +122,8 @@ private struct SiteTitle<Site: Website>: Component {
             [Tailwind.height(size: .oneFifth),
              Tailwind.padding(axis: .vertical, amount: .four),
              Tailwind.bg(.black),
-             Tailwind.text(.white)])
+             Tailwind.text(.white),
+             Tailwind.font(family: .mono)])
     }
 }
 private struct SiteNavigation<Site: Website>: Component {
@@ -146,11 +147,19 @@ private struct SiteNavigation<Site: Website>: Component {
                   Tailwind.margin(axis: .vertical, amount: .two)]
     
     var body: Component {
-        Div {
-            socials
-            navigation
-            SiteFooter()
-        }.classes([Tailwind.flexBox(props: [.flex, .column]), Tailwind.justify(.between), Tailwind.height(size: .full)])
+            Div {
+                socials
+                navigation
+                SiteFooter()
+            }.classes(["z-10",
+                       Tailwind.flexBox(props: [.flex, .column]),
+                       Tailwind.justify(.between),
+                       Tailwind.height(size: .full),
+                       Tailwind.bg(.zinc, shade: 500),
+                       Tailwind.text(.white),
+                       Tailwind.font(family: .mono),
+                       Tailwind.border(.sky, shade: 500),
+                       Tailwind.border(.right, size: .eight)])
     }
     
     private var navigation: Component {
@@ -176,7 +185,8 @@ private struct SiteNavigation<Site: Website>: Component {
                               Tailwind.transitionAll])
             }
         }.classes([Tailwind.flexBox(props: [.flex, .row]),
-                   Tailwind.gap(size: .two)])
+                   Tailwind.gap(size: .two),
+                   Tailwind.padding(axis: .top, amount: .two)])
     }
 }
 
@@ -206,13 +216,13 @@ private struct SiteFooter: Component {
                               Tailwind.transitionAll,
                               Tailwind.padding(axis: .horizontal, amount: .four),
                               Tailwind.transitionAll])
-            }
+            }.classes([Tailwind.padding(axis: .vertical, amount: .two)])
             
             Div {
                 Span("CCT+ ")
                 Span("© 2022")
                     .class(Tailwind.text(size: .sm))
-            }.classes([Tailwind.padding(axis: .bottom, amount: .two)])
+            }.classes([Tailwind.padding(axis: .vertical, amount: .two)])
         }
     }
 }

@@ -8,10 +8,13 @@
 import Foundation
 
 enum Sizes: String {
+    case zero = "0"
     case one = "1"
     case two = "2"
     case four = "4"
+    case eight = "8"
     case auto = "auto"
+    case `default` = ""
 }
 
 enum TShirtSizes: String {
