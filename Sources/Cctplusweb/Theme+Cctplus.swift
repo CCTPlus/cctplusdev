@@ -119,7 +119,10 @@ private struct SiteTitle<Site: Website>: Component {
                 .classes([Tailwind.text(size: .xl),
                           Tailwind.text(align: .center)])
         }.classes(
-            [Tailwind.height(size: .oneFifth), Tailwind.padding(axis: .vertical, amount: .four)])
+            [Tailwind.height(size: .oneFifth),
+             Tailwind.padding(axis: .vertical, amount: .four),
+             Tailwind.bg(.black),
+             Tailwind.text(.white)])
     }
 }
 private struct SiteNavigation<Site: Website>: Component {
@@ -144,11 +147,7 @@ private struct SiteNavigation<Site: Website>: Component {
     
     var body: Component {
         Div {
-            Div {
-                Link(context.site.name, url: "/")
-                    .classes([])
-                socials
-            }.classes([])
+            socials
             navigation
             SiteFooter()
         }.classes([Tailwind.flexBox(props: [.flex, .column]), Tailwind.justify(.between), Tailwind.height(size: .full)])
@@ -161,6 +160,7 @@ private struct SiteNavigation<Site: Website>: Component {
                 
                 return Button {
                     Link(section.title, url: section.path.absoluteString)
+                        .classes(sectionID == selectedSelectionID ? active : normal)
                 }
             }
         }
@@ -171,9 +171,12 @@ private struct SiteNavigation<Site: Website>: Component {
             return Link(url: social[1] as! URLRepresentable) {
                 Node.i(.class((social[0] as! FontAwesomeIcons).icon))
                     .class("text-xl")
+                    .classes([Tailwind.bg(.sky, shade: 500, opactity: 50, isHoverState: true),
+                              Tailwind.padding(axis: .horizontal, amount: .one),
+                              Tailwind.transitionAll])
             }
         }.classes([Tailwind.flexBox(props: [.flex, .row]),
-                   Tailwind.gap(size: .four)])
+                   Tailwind.gap(size: .two)])
     }
 }
 

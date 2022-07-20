@@ -8,6 +8,7 @@
 import Foundation
 
 enum Sizes: String {
+    case one = "1"
     case two = "2"
     case four = "4"
     case auto = "auto"

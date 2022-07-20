@@ -45,18 +45,15 @@ struct Tailwind {
     // TRANSITIONS
     static var transitionAll = "transition-all"
     
-    /// Creates background color
-    /// - Parameters:
-    ///   - color: Background Color
-    ///   - shade: 50 to 900 divisible by 100
-    ///   - opactity: 0 to 100 (100 is fully seen)
-    ///   - isHoverState: Determines if class only occurs when hovered
-    /// - Returns: Class name for Tailwind
+    
     static func bg(_ color: Colors,
-                   shade: Int,
+                   shade: Int? = nil,
                    opactity: Int? = nil,
                    isHoverState: Bool = false) -> String {
-        var twClass = "bg-\(color.rawValue)-\(shade)"
+        var twClass = "bg-\(color.rawValue)"
+        if let shade = shade {
+            twClass += "-\(shade)"
+        }
         if let opactity = opactity {
             twClass += "/\(opactity)"
         }
@@ -85,5 +82,19 @@ struct Tailwind {
     
     static func text(align: TextAlign) -> String {
         "text-\(align.rawValue)"
+    }
+    
+    static func text(_ color: Colors,
+                   shade: Int? = nil,
+                   opactity: Int? = nil,
+                   isHoverState: Bool = false) -> String {
+        var twClass = "text-\(color.rawValue)"
+        if let shade = shade {
+            twClass += "-\(shade)"
+        }
+        if let opactity = opactity {
+            twClass += "/\(opactity)"
+        }
+        return isHoverState ? "hover:\(twClass)" : twClass
     }
 }
