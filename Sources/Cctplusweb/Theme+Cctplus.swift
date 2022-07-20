@@ -22,44 +22,34 @@ private struct CCTPlusHTMLFactory<Site: Website>: HTMLFactory {
              .scriptHead(
                 for: index, on: context.site),
              .body{
-                 Wrapper {
-                     SiteHeader(context: context, selectedSelectionID: nil)
+                 Div {
+                     SiteTitle(context: context)
                      Div {
+                         SiteNavigation(context: context, selectedSelectionID: nil)
                          Div {
-                             H1(index.title)
-                                 .class(Tailwind.text(size: .xl6))
-                             Paragraph("Swift development, articles, and news by Maegan.")
-                                 .class(Tailwind.text(size: .xl))
-                         }.classes(
-                            [Tailwind.flexBox(props: [.flex, .wrap, .row]),
-                             Tailwind.alignItemsEnd,
-                             Tailwind.height(size: .oneFifth),
-                             Tailwind.bg(.gray, shade: 300),
-                             Tailwind.padding(axis: .all, amount: .four)])
-                         Div {
-                             Paragraph("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.")
-                                 .class(Tailwind.padding(axis: .vertical, amount: .two))
-                             Paragraph("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.")
-                                 .class(Tailwind.padding(axis: .vertical, amount: .two))
-                             Paragraph("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.")
-                                 .class(Tailwind.padding(axis: .vertical, amount: .two))
-                             Paragraph("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.")
-                                 .class(Tailwind.padding(axis: .vertical, amount: .two))
-                             Paragraph("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.")
-                                 .class(Tailwind.padding(axis: .vertical, amount: .two))
-                             Paragraph("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.")
-                                 .class(Tailwind.padding(axis: .vertical, amount: .two))
-                             Paragraph("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.")
-                                 .class(Tailwind.padding(axis: .vertical, amount: .two))
-                         }
-                         .classes([Tailwind.height(size: .fourFifth),
-                                   Tailwind.padding(axis: .all, amount: .four),
-                                   Tailwind.overflow(.yAuto)])
-                     }.classes([Tailwind.columnSpan(columns: 3),
-                                Tailwind.height(size: .screen)])
-                 }
-             },
-             .class("\(Tailwind.bg(.gray, shade: 100))")
+                             Div {
+                                 Paragraph("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.")
+                                     .class(Tailwind.padding(axis: .vertical, amount: .two))
+                                 Paragraph("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.")
+                                     .class(Tailwind.padding(axis: .vertical, amount: .two))
+                                 Paragraph("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.")
+                                     .class(Tailwind.padding(axis: .vertical, amount: .two))
+                                 Paragraph("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.")
+                                     .class(Tailwind.padding(axis: .vertical, amount: .two))
+                                 Paragraph("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.")
+                                     .class(Tailwind.padding(axis: .vertical, amount: .two))
+                                 Paragraph("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.")
+                                     .class(Tailwind.padding(axis: .vertical, amount: .two))
+                                 Paragraph("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.")
+                                     .class(Tailwind.padding(axis: .vertical, amount: .two))
+                             }
+                         }.classes([Tailwind.overflow(.yAuto)])
+                     }.classes([
+                        Tailwind.flexBox(props: [.flex, .row]),
+                        Tailwind.height(size: .fourFifth),
+                        Tailwind.gap(size: .four)])
+                 }.classes([Tailwind.height(size: .screen), Tailwind.overflow(.hidden)])
+             }
         )
     }
     
@@ -68,12 +58,12 @@ private struct CCTPlusHTMLFactory<Site: Website>: HTMLFactory {
              .scriptHead(for: section, on: context.site),
              .body {
                  Wrapper {
-                     SiteHeader(context: context, selectedSelectionID: section.id)
+                     SiteNavigation(context: context, selectedSelectionID: section.id)
                      Div {
                          H1(section.title)
                              .class(Tailwind.text(size: .xl6))
                      }.classes([Tailwind.columnSpan(columns: 3),
-                                Tailwind.height(size: .screen),
+                                Tailwind.height(size: .quarter),
                                 Tailwind.overflow(.yAuto)])
                  }
              },
@@ -118,8 +108,21 @@ private struct CCTPlusHTMLFactory<Site: Website>: HTMLFactory {
     }
     
 }
-
-private struct SiteHeader<Site: Website>: Component {
+private struct SiteTitle<Site: Website>: Component {
+    var context: PublishingContext<Site>
+    var body: Component {
+        Div {
+            H1(context.index.title)
+                .classes([Tailwind.text(size: .xl6),
+                          Tailwind.text(align: .center)])
+            Paragraph("Swift development, articles, and news by Maegan.")
+                .classes([Tailwind.text(size: .xl),
+                          Tailwind.text(align: .center)])
+        }.classes(
+            [Tailwind.height(size: .oneFifth), Tailwind.padding(axis: .vertical, amount: .four)])
+    }
+}
+private struct SiteNavigation<Site: Website>: Component {
     var context: PublishingContext<Site>
     var selectedSelectionID: Site.SectionID?
     
@@ -140,19 +143,15 @@ private struct SiteHeader<Site: Website>: Component {
                   Tailwind.margin(axis: .vertical, amount: .two)]
     
     var body: Component {
+        Div {
             Div {
-                Div {
-                    Link(context.site.name, url: "/")
-                        .classes([Tailwind.text(size: .lg),
-                                 Tailwind.width(size: .quarter)])
-                    socials
-                }.classes([Tailwind.padding(axis: .left, amount: .four)])
-                navigation
-                SiteFooter()
-            }.classes([Tailwind.columnSpan(columns: 1),
-                       Tailwind.flexBox(props: [.flex, .column]),
-                       Tailwind.justify(.between),
-                       Tailwind.height(size: .screen)])
+                Link(context.site.name, url: "/")
+                    .classes([])
+                socials
+            }.classes([])
+            navigation
+            SiteFooter()
+        }.classes([Tailwind.flexBox(props: [.flex, .column]), Tailwind.justify(.between), Tailwind.height(size: .full)])
     }
     
     private var navigation: Component {
@@ -162,7 +161,7 @@ private struct SiteHeader<Site: Website>: Component {
                 
                 return Button {
                     Link(section.title, url: section.path.absoluteString)
-                }.classes(sectionID == selectedSelectionID ? active : normal)
+                }
             }
         }
     }
@@ -180,10 +179,10 @@ private struct SiteHeader<Site: Website>: Component {
 
 private struct SiteFooter: Component {
     let footerLinkClasses = [Tailwind.bg(.sky, shade: 500),
-                      Tailwind.bg(.sky, shade: 500, opactity: 50, isHoverState: true),
-                      Tailwind.transitionAll,
-                      Tailwind.padding(axis: .horizontal, amount: .four),
-                      Tailwind.transitionAll]
+                             Tailwind.bg(.sky, shade: 500, opactity: 50, isHoverState: true),
+                             Tailwind.transitionAll,
+                             Tailwind.padding(axis: .horizontal, amount: .four),
+                             Tailwind.transitionAll]
     
     var body: Component {
         Footer {
@@ -220,7 +219,7 @@ private struct Wrapper: ComponentContainer {
     
     var body: Component {
         Div(content: content)
-            .classes([Tailwind.grid(with: 4)])
+            .classes([])
     }
     
 }

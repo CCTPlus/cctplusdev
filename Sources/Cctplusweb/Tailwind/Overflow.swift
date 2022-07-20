@@ -10,4 +10,5 @@ import Foundation
 enum Overflow: String {
     case yAuto = "y-auto"
     case yScroll = "y-scroll"
+    case hidden = "hidden"
 }

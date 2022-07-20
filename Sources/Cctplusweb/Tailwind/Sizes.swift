@@ -28,4 +28,5 @@ enum Fractions: String {
     case oneFifth = "1/5"
     case fourFifth = "4/5"
     case screen = "screen"
+    case full = "full"
 }

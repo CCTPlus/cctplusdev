@@ -26,6 +26,9 @@ struct Tailwind {
     static func justify(_ justify: Justify) -> String {
         return "justify-\(justify.rawValue)"
     }
+    static func justifyItems(_ justify: Justify) -> String {
+        return "justify-items-\(justify.rawValue)"
+    }
     
     // Grid
     static func grid(with columns: Int) -> String {
@@ -78,5 +81,9 @@ struct Tailwind {
     
     static func text(size: TShirtSizes) -> String {
         "text-\(size.rawValue)"
+    }
+    
+    static func text(align: TextAlign) -> String {
+        "text-\(align.rawValue)"
     }
 }
