@@ -23,6 +23,7 @@ enum TShirtSizes: String {
     case lg = "lg"
     case xl = "xl"
     case xl2 = "2xl"
+    case xl3 = "3xl"
     case xl4 = "4xl"
     case xl6 = "6xl"
 }
@@ -31,6 +32,8 @@ enum Fractions: String {
     case quarter = "1/4"
     case oneFifth = "1/5"
     case fourFifth = "4/5"
+    case oneSixth = "1/6"
+    case fiveSixth = "5/6"
     case screen = "screen"
     case full = "full"
 }

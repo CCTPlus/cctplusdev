@@ -44,6 +44,7 @@ struct Tailwind {
     
     // TRANSITIONS
     static var transitionAll = "transition-all"
+    static var transitionTransform = "transition-transform"
     
     
     static func bg(_ color: Colors,
@@ -126,5 +127,9 @@ struct Tailwind {
             twClass += "/\(opactity)"
         }
         return isHoverState ? "hover:\(twClass)" : twClass
+    }
+    
+    static func addBreakPoint(_ breakPoint: BreakPoint, _ twProp: String) -> String {
+        return "\(breakPoint):\(twProp)"
     }
 }

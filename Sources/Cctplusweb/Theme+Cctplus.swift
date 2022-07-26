@@ -17,6 +17,8 @@ extension Theme {
 }
 
 private struct CCTPlusHTMLFactory<Site: Website>: HTMLFactory {
+    let height = "\(Tailwind.height(size: .fiveSixth)) \(Tailwind.addBreakPoint(.md, Tailwind.height(size: .fourFifth)))"
+    let flexbox = "\(Tailwind.addBreakPoint(.md, Tailwind.flexBox(props: [.flex, .row])))"
     func makeIndexHTML(for index: Index, context: PublishingContext<Site>) throws -> HTML {
         HTML(.lang(context.site.language),
              .scriptHead(
@@ -43,12 +45,12 @@ private struct CCTPlusHTMLFactory<Site: Website>: HTMLFactory {
                                  Paragraph("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.")
                                      .class(Tailwind.padding(axis: .vertical, amount: .two))
                              }
-                         }.classes([Tailwind.overflow(.yAuto)])
+                         }.classes([Tailwind.addBreakPoint(.md, Tailwind.overflow(.yAuto))])
                      }.classes([
-                        Tailwind.flexBox(props: [.flex, .row]),
-                        Tailwind.height(size: .fourFifth),
+                        flexbox,
+                        height,
                         Tailwind.gap(size: .four)])
-                 }.classes([Tailwind.height(size: .screen), Tailwind.overflow(.hidden)])
+                 }.classes([Tailwind.height(size: .screen), Tailwind.addBreakPoint(.md, Tailwind.overflow(.hidden))])
              }
         )
     }
@@ -109,17 +111,18 @@ private struct CCTPlusHTMLFactory<Site: Website>: HTMLFactory {
     
 }
 private struct SiteTitle<Site: Website>: Component {
+    let fontSize = "\(Tailwind.text(size: .xl4)) \(Tailwind.addBreakPoint(.md, Tailwind.text(size: .xl6)))"
+    let height = "\(Tailwind.height(size: .oneSixth)) \(Tailwind.addBreakPoint(.md, Tailwind.height(size: .oneFifth)))"
+    
     var context: PublishingContext<Site>
     var body: Component {
         Div {
             H1(context.index.title)
-                .classes([Tailwind.text(size: .xl6),
-                          Tailwind.text(align: .center)])
-            Paragraph("Swift development, articles, and news by Maegan.")
-                .classes([Tailwind.text(size: .xl),
+                .classes([fontSize,
                           Tailwind.text(align: .center)])
         }.classes(
-            [Tailwind.height(size: .oneFifth),
+            [height,
+             Tailwind.padding(axis: .horizontal, amount: .two),
              Tailwind.padding(axis: .vertical, amount: .four),
              Tailwind.bg(.black),
              Tailwind.text(.white),
